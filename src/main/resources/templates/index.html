@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,24 +15,29 @@
         }
         .form-container {
             background: white;
-            padding: 20px;
+            padding: 80px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 400px;
         }
-        input[type="text"] {
+        textarea {
             width: 100%;
-            padding: 10px;
-            margin: 10px 0;
+            padding: 20px;
+            margin: 15px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
+            font-size: 20px;
+            height: 100px;
+            resize: vertical;
         }
         button {
             background: #007BFF;
             color: white;
-            padding: 10px;
+            padding: 15px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
         }
         button:hover {
             background: #0056b3;
@@ -41,9 +46,9 @@
 </head>
 <body>
 <div class="form-container">
-    <form>
-        <label for="name">Enter your name:</label>
-        <input type="text" id="name" name="name" placeholder="Your name...">
+    <form th:action="@{/query}" method="get">
+        <label for="name">Enter</label>
+        <textarea id="name" name="prompt" placeholder="Your Description..."></textarea>
         <button type="submit">Submit</button>
     </form>
 </div>
