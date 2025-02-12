@@ -8,26 +8,24 @@ import reactor.core.publisher.Mono;
 
     @Controller
     public class ollamaController {
-
         private final ollamaService ollamaService;
 
-        public ollamaController(ollamaService ollamaService) {
+
+        public ollamaController(com.example.demo.service.ollamaService ollamaService) {
             this.ollamaService = ollamaService;
         }
 
-        @GetMapping ("/test")
-        public String index()
-        {
-            return "index";
+        @GetMapping
+        public String showChatPage() {
+            return "chat"; // This maps to "chat.html" in resources/templates/
         }
 
-        @GetMapping("/query")
-        public String getResponse(@RequestParam String prompt, Model model) {
-            String response = ollamaService.askDeepSeek(prompt).block(); // Blocking call for simplicity
-            model.addAttribute("response", response);
-            System.out.println("hello");
-//            return ollamaService.askDeepSeek(prompt);
-            return "responsePage";
+        @PostMapping("/chat")
+        public String chatWithDeepSeek(@RequestParam String message, Model model) {
+            String response = ollamaService.sendMessageToDeepSeek(message);
+            model.addAttribute("userMessage", message);
+            model.addAttribute("botResponse", response);
+            return "chat";
         }
 
     }
