@@ -8,6 +8,7 @@ import reactor.core.publisher.Mono;
 
     @Controller
     public class ollamaController {
+
         private final ollamaService ollamaService;
 
 
