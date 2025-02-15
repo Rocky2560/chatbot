@@ -11,7 +11,6 @@ import reactor.core.publisher.Mono;
 
         private final ollamaService ollamaService;
 
-
         public ollamaController(com.example.demo.service.ollamaService ollamaService) {
             this.ollamaService = ollamaService;
         }
